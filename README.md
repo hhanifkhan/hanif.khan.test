@@ -1,6 +1,6 @@
 # Product Listing Page
 
-- Live Demo: [Product Listing Page](url_here)
+- Live Demo: [Product Listing Page](https://hanif-ui-task.herokuapp.com/)
 
 ## Prerequisite
 
@@ -31,7 +31,7 @@ This App is using multiple dev tools like husky, prettier, ESlint, style-lint to
 ## Project Setup Locally
 
 ```
-git clone gitLink-here
+git clone https://github.com/hhanifkhan/hanif.khan.test.git
 cd source
 yarn install
 yarn start
