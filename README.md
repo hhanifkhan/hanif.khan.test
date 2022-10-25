@@ -56,10 +56,6 @@ App File/Folder Structure Below
 ```
 
 
-- [**dist**](dist)
-    - [**assets**](dist/assets)
-        - [**products**](dist/assets/products)
-    - [**mockData**](dist/mockData)
 - [**docs**](docs)
 - [**public**](public)
     - [**assets**](public/assets)
