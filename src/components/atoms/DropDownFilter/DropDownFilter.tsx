@@ -3,7 +3,7 @@ import { useState, ChangeEvent } from "react";
 import { IProductSizes } from "../../../interfaces/common";
 interface DropDownFilterProps {
   productSizes: IProductSizes[];
-  filterProductsBySize?: Function;
+  filterProductsBySize?: (param: string) => void;
 }
 
 export default function DropDownFilter({
@@ -13,7 +13,6 @@ export default function DropDownFilter({
   const [value, setValue] = useState("");
 
   const handleOnChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    console.log(event.target.value);
     setValue(event.target.value);
     filterProductsBySize && filterProductsBySize(event.target.value);
   };

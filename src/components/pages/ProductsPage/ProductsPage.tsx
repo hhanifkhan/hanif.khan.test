@@ -1,8 +1,8 @@
-import React from "react";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import ProductList from "../../organisms/ProductList";
 import Header from "../../molecules/Header";
 import getProductData from "../../../services/getProductData";
+import { IProduct } from "../../../interfaces/common";
 
 export default function ProductsPage() {
   const isDataFetchedRef = useRef(false);
@@ -23,24 +23,29 @@ export default function ProductsPage() {
     }
   }, []);
 
-  const filterProductsBySize = (selectedFilter: string) => {
-    if (!selectedFilter) {
-      setFilteredProducts(productsData);
-    } else {
-      const updatedProducts: any =
-        productsData &&
-        productsData.length &&
-        productsData.filter((product: any) =>
-          product.size.includes(selectedFilter)
-        );
-      setFilteredProducts(updatedProducts);
-    }
-  };
+  const filterProductsBySize = useCallback(
+    (selectedFilter: string) => {
+      if (!selectedFilter) {
+        setFilteredProducts(productsData);
+      } else {
+        const updatedProducts: any =
+          productsData &&
+          productsData.length &&
+          productsData.filter((product: IProduct) =>
+            product?.size?.includes(selectedFilter)
+          );
+        setFilteredProducts(updatedProducts);
+      }
+    },
+    [productsData]
+  );
 
   return (
     <main className="container mx-auto">
       <Header filterProductsBySize={filterProductsBySize} />
-      <ProductList productsData={filteredProducts} />
+      {filteredProducts?.length && (
+        <ProductList productsData={filteredProducts} />
+      )}
     </main>
   );
 }
