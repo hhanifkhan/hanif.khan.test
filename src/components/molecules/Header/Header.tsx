@@ -1,13 +1,13 @@
-import React from "react";
+import React, { memo } from "react";
 import Heading from "../../atoms/Heading";
 import DropDownFilter from "../../atoms/DropDownFilter";
 import { TITLE, PRODUCT_SIZES } from "./../../../constants/global";
 
 interface HeaderProps {
-  filterProductsBySize: Function;
+  filterProductsBySize: (param: string) => void;
 }
 
-export default function Header({ filterProductsBySize }: HeaderProps) {
+const Header = memo(function Header({ filterProductsBySize }: HeaderProps) {
   return (
     <header className="flex justify-between bg-light-blue py-3 px-pad-10 mb-3 mt-11 items-center">
       <Heading>{TITLE}</Heading>
@@ -17,4 +17,6 @@ export default function Header({ filterProductsBySize }: HeaderProps) {
       />
     </header>
   );
-}
+});
+
+export default Header;

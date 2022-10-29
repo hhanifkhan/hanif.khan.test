@@ -10,7 +10,7 @@ export default async function getProductsData() {
     });
     const data = await response.json();
     return data;
-  } catch (e: any) {
+  } catch (error) {
     throw new Error(FETCH_PRODUCTS_ERROR);
   }
 }
